@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="JAVA" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff9b7107-3c7b-497a-8201-5099249fd907">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="345"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 	
+consigner_id as ID,
+consigner_name  as NAME, 
+CONCAT(consigner_address1,
+ ', ',consigner_address2,
+ ', ',consigner_address3,
+ ', ',consigner_landmark,
+ ', ',consigner_city,
+ ', ',consigner_state, 
+ ', ',consigner_country,
+ ', ',consigner_pin) as ADDRESS,
+consigner_phone as PHONE,
+consigner_mobile as MOBILE,
+consigner_email as EMAIL,
+consigner_website as WEBSITE,
+consigner_gstin as GSTIN,
+consigner_pan as PAN
+
+from consigner]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="MOBILE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="WEBSITE" class="java.lang.String"/>
+	<field name="GSTIN" class="java.lang.String"/>
+	<field name="PAN" class="java.lang.String"/>
+	<title>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="279" y="0" width="255" height="33" forecolor="#666666" backcolor="#FFFFFF" uuid="a7fa4ad8-9c83-40d1-8f3f-fa69c3c8d079"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.75" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUSTOMER LIST]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="89" height="20" uuid="43f8772b-ec27-402a-9e0e-e1cb756cab9f"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="0" width="89" height="20" uuid="faf2e238-fcd1-4721-a52f-4dd67b0302c2"/>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="0" width="89" height="20" uuid="8f521449-44e6-463b-b9a7-33167ce859bf"/>
+				<text><![CDATA[ADDRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="267" y="0" width="89" height="20" uuid="80fae174-4846-4e1d-9e56-c4aee75bc2b7"/>
+				<text><![CDATA[PHONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="89" height="20" uuid="3a089b56-bbe7-4a98-acab-fb53f5398d87"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[MOBILE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="0" width="89" height="20" uuid="175a5cf5-eb12-40bb-92ee-0ff796f51472"/>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="534" y="0" width="89" height="20" uuid="f1586012-70ae-4dc4-b90b-9fedf509c32b"/>
+				<text><![CDATA[WEBSITE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="623" y="0" width="89" height="20" uuid="0182156c-521e-4ed3-9d5e-194f06c7a5d8"/>
+				<text><![CDATA[GSTIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="712" y="0" width="89" height="20" uuid="d4a39853-72e8-4292-be9b-d4440d360872"/>
+				<text><![CDATA[PAN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="215" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="89" height="20" uuid="1e1184ed-730d-4ee6-82ae-29b1bd5c3577"/>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="1" width="89" height="20" uuid="4344e5af-358b-429f-a7c8-79a561a610c6"/>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="1" width="89" height="20" uuid="966d239c-1e9f-482b-9f4c-f4125357b15b"/>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="1" width="89" height="20" uuid="e1221d54-e7bd-4e95-9c28-32d5148282ad"/>
+				<textFieldExpression><![CDATA[$F{PHONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="89" height="20" uuid="9fa739b9-88f7-4cf2-9c88-3ddf5272a807"/>
+				<textFieldExpression><![CDATA[$F{MOBILE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="1" width="89" height="20" uuid="950779c6-6821-4cb9-a8be-7ed8490532b4"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="534" y="1" width="89" height="20" uuid="446077c8-e18a-4021-8b57-c139806d5ca7"/>
+				<textFieldExpression><![CDATA[$F{WEBSITE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="623" y="1" width="89" height="20" uuid="a5b4f6a5-df24-4318-aec0-a594bd87924a"/>
+				<textFieldExpression><![CDATA[$F{GSTIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="714" y="1" width="89" height="20" uuid="c3a62086-c6c1-4582-8724-4345dffa8196"/>
+				<textFieldExpression><![CDATA[$F{PAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<textField pattern="yyyy.MMMMM.dd GGG hh:mm aaa">
+				<reportElement mode="Transparent" x="413" y="0" width="192" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="bf62795e-93fe-4850-9944-4ac43b8ccd4a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Calibri" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="0" width="93" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="0d804aa9-89cd-4352-8a46-dcf859d67da5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Generated on :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="683" y="0" width="80" height="20" uuid="3f6e0aa7-e612-43a0-b76b-5fe13e11fc03"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="763" y="0" width="40" height="20" uuid="1746ee4d-3cdd-4b09-97b7-66ba00fd2591"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

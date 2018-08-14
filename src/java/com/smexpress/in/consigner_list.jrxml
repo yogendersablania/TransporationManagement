@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff9b7107-3c7b-497a-8201-5099249fd907">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="79"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="312eb301-53f0-48a0-80c0-c17889355e99"/>
+	<queryString>
+		<![CDATA[select 	
+consigner_id as ID,
+consigner_name  as NAME, 
+CONCAT(consigner_address1,
+ ', ',consigner_address2,
+ ', ',consigner_address3,
+ ', ',consigner_landmark,
+ ', ',consigner_city,
+ ', ',consigner_state, 
+ ', ',consigner_country,
+ ', ',consigner_pin) as ADDRESS,
+consigner_phone as PHONE,
+consigner_mobile as MOBILE,
+consigner_email as EMAIL,
+consigner_website as WEBSITE,
+consigner_gstin as GSTIN,
+consigner_pan as PAN
+
+from consigner]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="MOBILE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="WEBSITE" class="java.lang.String"/>
+	<field name="GSTIN" class="java.lang.String"/>
+	<field name="PAN" class="java.lang.String"/>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="345" y="0" width="100" height="16" forecolor="#0099FF" uuid="d1445a35-2728-46bf-b3c7-67a51e1137e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accounts Copy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="16" width="179" height="30" forecolor="#0099FF" uuid="40915f1b-0b89-4f43-991c-eeb9517c4d68"/>
+				<textElement textAlignment="Center">
+					<font size="22" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[SM EXPRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="712" y="0" width="89" height="20" forecolor="#0099FF" uuid="ab823699-3488-4fd9-ae41-4ffc09b31b6f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[044 - 25530176 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="683" y="0" width="29" height="20" forecolor="#0099FF" uuid="e724808e-cc00-492e-8413-424a99598f8f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Off. : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="683" y="20" width="29" height="20" forecolor="#0099FF" uuid="e8c877a6-da92-4f18-ab80-436c72c0a509"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cell : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="712" y="19" width="89" height="20" forecolor="#0099FF" uuid="e128beb7-129a-421b-8507-1004a55adb81"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7200004295 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="712" y="39" width="89" height="20" forecolor="#0099FF" uuid="7f78770a-1d8f-4b86-80b5-dd3bcac1a179"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9381384295 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="32" height="16" uuid="6d8142a6-c635-4433-a161-de975b9aa009"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ GSTIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="0" width="78" height="16" uuid="a821514f-b4f3-476f-8e25-f816b0ef4960"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[: 33AMIPP3636MIZP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="16" width="32" height="16" uuid="bd1bf0d6-28b4-4166-8cf2-3107dc9d5240"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="15" width="77" height="16" uuid="4476184d-43f0-4ab0-8ab7-012ffec237d4"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[: AMIPP3636M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="46" width="346" height="16" uuid="5e4805ea-5d50-4e22-8879-81d747516ff6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B-8, CMDA Truck Terminal Complex, GNT Road, Madhavaram, Chennai - 600110]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="193" y="62" width="402" height="16" forecolor="#0099FF" uuid="58f2c71e-39c5-4bd5-bc51-2cadd3963e0b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.smexpress.in              email - info@smexpress.in              smexpress@roccketmail.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="32" width="108" height="46" uuid="d6706de5-6813-440c-a400-d5ff89f29d35"/>
+				<imageExpression><![CDATA["C:\\Users\\Yogender\\Desktop\\Logo.png"]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="604" y="0" width="66" height="50" uuid="b2eeb549-de46-4a78-b941-596402e5541b"/>
+				<jr:Code128 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[]]></jr:codeExpression>
+				</jr:Code128>
+			</componentElement>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="5" width="139" height="40" uuid="ecb37972-4c42-493d-b195-873aa475756b"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAUTION
+The consignment will not be detained diverted or re-booked without Consignee Copy will be delivered at the destination.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="0" width="107" height="16" forecolor="#000000" uuid="90260cac-e538-4a70-801c-56e2d0a9213a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[AT OWNER'S RISK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="16" width="150" height="16" forecolor="#000000" uuid="e3b51893-a971-4dcd-86dc-eb0da548ac6c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSURANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="32" width="150" height="35" forecolor="#000000" uuid="2dc3a498-9ae3-4245-be33-3687bb9be784"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSURANCE
+The Customer has stated that:
+he has not insured the consignment or he has insured the consignment.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="67" width="40" height="10" uuid="f8d12b2b-04f1-4e4d-a501-211b9b93e5b0"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="76" width="40" height="10" uuid="05570c4e-6e5c-4bea-9ba7-8ee0d6dfb743"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Policy No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="85" width="40" height="10" uuid="2edb4969-fa2f-4c5e-8a43-410d26ec15a8"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="75" width="40" height="10" uuid="8956d980-8747-49fc-bb22-228f887e4320"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="84" width="40" height="10" uuid="b687313e-76ec-46c6-b608-494d06702fd8"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="61" width="139" height="36" uuid="4d3a0d50-2acc-4a9c-bb46-5aa4e6ed8b34"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address to the Delivery Office : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="7" width="107" height="16" forecolor="#000000" uuid="e36b42b2-0ccb-4a0e-8776-f022f4b3fbea"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LORRY NUMBER: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="30" width="107" height="16" forecolor="#000000" uuid="6f3b0e47-6d23-4780-b880-79c81632871e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ISSUING BRANCH : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="53" width="107" height="16" forecolor="#000000" uuid="eac41954-e772-498e-b288-220018d77ab9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SM/EXP/LR/CHN :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="75" width="107" height="16" forecolor="#000000" uuid="b21c9993-a32c-4cab-a403-1809effe1387"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CN DATE : ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="1" width="139" height="13" uuid="9fe7351a-bffe-4588-a1b6-a775aaaa4092"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cosigner's Name & Address : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="20" width="139" height="13" uuid="39e5d978-d46b-462f-92ef-782927607acc"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cosignee's Name & Address : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="1" width="400" height="13" uuid="9c9f5b2d-6ec7-49a7-ba92-75fde2b42e07"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="20" width="400" height="13" uuid="0d9d21cd-a7dd-4c8a-abcb-4c7fe710888d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="645" y="20" width="40" height="13" uuid="386570fd-1169-4b4a-b668-a52b52d3d5ba"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="645" y="2" width="40" height="13" uuid="c9107bec-dc10-4dc7-8a76-a96196494b7e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="2" width="100" height="13" uuid="b3e7b9ff-a8f7-43e5-b646-f77d8e4603b6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="690" y="20" width="100" height="13" uuid="4622b5e9-c2d0-4bb5-940e-d235d0864957"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+		<band height="297">
+			<staticText>
+				<reportElement x="3" y="7" width="100" height="20" uuid="40d3adaf-cdfe-4c8e-a210-0f270ca5ab4e"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="7" width="100" height="20" uuid="4618a3e0-87c2-444d-8ff6-d9e560778c2e"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="7" width="100" height="20" uuid="efc860e3-3f7a-448f-a1d3-bdd9dd501dd1"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="7" width="100" height="20" uuid="499c735f-6e33-4f85-a07e-10430324a299"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<staticText>
+				<reportElement x="310" y="0" width="93" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="0d804aa9-89cd-4352-8a46-dcf859d67da5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Generated on :]]></text>
+			</staticText>
+			<textField pattern="yyyy.MMMMM.dd GGG hh:mm aaa">
+				<reportElement mode="Transparent" x="412" y="0" width="192" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="bf62795e-93fe-4850-9944-4ac43b8ccd4a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Calibri" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="675" y="0" width="80" height="20" uuid="3f6e0aa7-e612-43a0-b76b-5fe13e11fc03"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="761" y="0" width="40" height="20" uuid="1746ee4d-3cdd-4b09-97b7-66ba00fd2591"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
