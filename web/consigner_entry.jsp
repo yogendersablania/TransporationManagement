@@ -21,7 +21,7 @@
         <h1 align="center">CREATE CONSIGNER</h1>
         <%
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-            String sqlString1 = "select * from countries order by name";
+            String sqlString1 = "select id, name from countries order by name";
             String sqlString2 = "select * from states order by name";
             String sqlString3 = "select * from cities order by name";
             Statement statement = connection.createStatement();
@@ -37,7 +37,7 @@
             <table width="90%" align="center">
                 <%if (request.getAttribute("Message") != null) {%>
                 <tr><td colspan="3"><b><font color="blue"><%=request.getAttribute("Message")%></font></b></td></tr>
-                    <%}%>                
+                            <%}%>                
                 <tr>
                     <td>
                         <div class="container">
@@ -63,7 +63,17 @@
                     <td>
                         <div class="container">
                             <label for="country"><b>Country *</b></label>
-                            <input type="text" placeholder="Enter Country " name="country">
+                            <select type="text" name="country">
+                                <option value="id">Select Country</option>
+                                <%
+                                    while (rs1.next()) {
+                                %>
+                                <option value="<%=rs1.getInt("id")%>"><%=rs1.getString("name")%></option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                            <!--<input type="text" placeholder="Enter Country " name="country">-->
 
                             <label for="state"><b>State *</b></label>
                             <input type="text" placeholder="Enter State " name="state">

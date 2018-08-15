@@ -5,6 +5,11 @@ User 	:	admin
 Pass	:	admin
 
 
+Report format dianamically handle request
+-----------------------------------------
+https://datatables.net/examples/server_side/row_details.html
+
+
 
 1. How to host JAVA application in cPanel.
 
