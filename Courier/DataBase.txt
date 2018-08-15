@@ -1,0 +1,17 @@
+Host		:	localhost
+Port		:	3306
+Database	:	courier
+User Name	:	root
+Password	:	root
+URL		:	jdbc:mysql://localhost:3306/mysql
+
+
+Server Database Information of smexpress
+----------------------------------------
+
+Host		:	209.99.16.57
+Port		:	3306
+Database	:	smexpfrx_erp
+User Name	:	smexpfrx_admin
+Password	:	Pass@123
+URL		:	jdbc:mysql://209.99.16.57:3306/smexpfrx_erp

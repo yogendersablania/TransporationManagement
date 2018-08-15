@@ -1,0 +1,25 @@
+Consigner List
+---------------
+select 	
+consigner_id as ID,
+consigner_name  as NAME, 
+CONCAT(consigner_address1,
+ ', ',consigner_address2,
+ ', ',consigner_address3,
+ ', ',consigner_landmark,
+ ', ',consigner_city,
+ ', ',consigner_state, 
+ ', ',consigner_country,
+ ', ',consigner_pin) as ADDRESS,
+consigner_phone as PHONE,
+consigner_mobile as MOBILE,
+consigner_email as EMAIL,
+consigner_website as WEBSITE,
+consigner_gstin as GSTIN,
+consigner_pan as PAN
+
+from consigner
+
+
+
+            

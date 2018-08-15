@@ -1,0 +1,12 @@
+NextReports Site:  http://www.next-reports.com
+NextReports Designer Manual: http://www.next-reports.com/index.php/documentation/nextreports-designer-documentation.html
+NextReports Designer Download: http://www.next-reports.com/index.php/download/free-reports-designer-software-download-nextreports.html
+NextReports Integration Demo: http://www.next-reports.com/index.php/documentation/nextreports-designer-documentation/integration
+SwingX & JXLayer: http://swinglabs.org/downloads.jsp
+JGoodies: http://www.jgoodies.com/downloads/libraries.html
+MyDoggy: http://mydoggy.sourceforge.net/download.html
+JFreeChart: http://www.jfree.org/jfreechart/
+Open Flash Chart: http://teethgrinder.co.uk/open-flash-chart-2/
+iText: http://www.itextpdf.com/download.php
+POI: http://poi.apache.org/download.html
+XStream : http://xstream.codehaus.org/download.html
