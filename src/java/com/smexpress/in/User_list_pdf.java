@@ -34,7 +34,8 @@ import javafx.scene.paint.Color;
 public class User_list_pdf {
 
     public void user_list() {
-
+        //private static final String XML_PATH = "/xml/20549776974-01-FFA1-80.XML";
+        //private static final String JASPER_PATH = "/jasper/test-factura.jasper";
         try {
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
             Statement stmt = connection.createStatement();

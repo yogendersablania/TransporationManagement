@@ -1,3 +1,11 @@
+GIT User ID and Password
+------------------------
+
+User 	:	admin
+Pass	:	admin
+
+
+
 1. How to host JAVA application in cPanel.
 
 2. Connect to databases remotely in cPanel hosting 
