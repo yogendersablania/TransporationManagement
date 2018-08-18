@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ff9b7107-3c7b-497a-8201-5099249fd907">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="213"/>
+	<property name="ireport.y" value="165"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -23,7 +23,30 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="Table Dataset 1" uuid="312eb301-53f0-48a0-80c0-c17889355e99"/>
+	<subDataset name="Table Dataset 1" uuid="312eb301-53f0-48a0-80c0-c17889355e99">
+		<queryString>
+			<![CDATA[select 	
+consigner_name  as NAME, 
+CONCAT(consigner_address1,
+ ', ',consigner_address2,
+ ', ',consigner_address3,
+ ', ',consigner_landmark,
+ ', ',consigner_city,
+ ', ',consigner_state, 
+ ', ',consigner_country,
+ ', ',consigner_pin) as ADDRESS,
+consigner_phone as PHONE,
+consigner_mobile as MOBILE,
+consigner_gstin as GSTIN
+
+from consigner]]>
+		</queryString>
+		<field name="NAME" class="java.lang.String"/>
+		<field name="ADDRESS" class="java.lang.String"/>
+		<field name="PHONE" class="java.lang.String"/>
+		<field name="MOBILE" class="java.lang.String"/>
+		<field name="GSTIN" class="java.lang.String"/>
+	</subDataset>
 	<queryString>
 		<![CDATA[select 	
 consigner_id as ID,
@@ -395,6 +418,14 @@ he has not insured the consignment or he has insured the consignment.
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="157" y="193" width="100" height="20" uuid="8f7b168e-145c-455b-9d23-c8c55720fc78"/>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="157" y="211" width="100" height="20" uuid="a9080a7f-6b1e-4d6a-832c-7b091d70fbae"/>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

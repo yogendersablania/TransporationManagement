@@ -4,6 +4,7 @@
     Author     : User
 --%>
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -18,22 +19,8 @@
     <body>
         <%@include file="header.jsp"%>
         <br/>
-        <h1 align="center">CREATE CONSIGNER</h1>
-        <%
-            Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-            String sqlString1 = "select id, name from countries order by name";
-            String sqlString2 = "select * from states order by name";
-            String sqlString3 = "select * from cities order by name";
-            Statement statement = connection.createStatement();
-            statement.executeQuery(sqlString1);
-            statement.executeQuery(sqlString2);
-            statement.executeQuery(sqlString3);
-            ResultSet rs1 = statement.getResultSet();
-            ResultSet rs2 = statement.getResultSet();
-            ResultSet rs3 = statement.getResultSet();
-        %>
-
-        <form name="cnentry" action="customer_validation.jsp" method="post" onsubmit="validateMyForm();">
+        <h1 align="center">CREATE CONSIGNER</h1>        
+        <form name="cnentry" action="consignment_validation.jsp" method="POST">
             <table width="90%" align="center">
                 <%if (request.getAttribute("Message") != null) {%>
                 <tr><td colspan="3"><b><font color="blue"><%=request.getAttribute("Message")%></font></b></td></tr>
@@ -58,27 +45,16 @@
                             <label for="landmark"><b>Landmark</b></label>
                             <input type="text" placeholder="Enter Landmark" name="landmark">                            
                         </div>
-                        </form>
                     </td>
                     <td>
                         <div class="container">
                             <label for="country"><b>Country *</b></label>
-                            <select type="text" name="country">
-                                <option value="id">Select Country</option>
-                                <%
-                                    while (rs1.next()) {
-                                %>
-                                <option value="<%=rs1.getInt("id")%>"><%=rs1.getString("name")%></option>
-                                <%
-                                    }
-                                %>
-                            </select>
-                            <!--<input type="text" placeholder="Enter Country " name="country">-->
+                            <input type="text" placeholder="Enter Country " name="country">
 
-                            <label for="state"><b>State *</b></label>
+                            <label for="state"><b>State *</b></label>                            
                             <input type="text" placeholder="Enter State " name="state">
 
-                            <label for="city"><b>City</b></label>
+                            <label for="city"><b>City</b></label>                            
                             <input type="text" placeholder="Enter City " name="city">
 
                             <label for="pin"><b>Pin</b></label>
@@ -87,7 +63,6 @@
                             <label for="phone"><b>Phone</b></label>
                             <input type="text" placeholder="Enter Phone" name="phone">
                         </div>
-                        </form>
                     </td>
                     <td>
                         <div class="container">
@@ -106,7 +81,6 @@
                             <label for="pan"><b>PAN</b></label>
                             <input type="text" placeholder="Enter PAN" name="pan">
                         </div>
-                        </form>
                     </td>
                 </tr>
                 <tr>               
@@ -117,7 +91,7 @@
                         </div>
                     </td>
                     <td></td>
-                </tr>
+                </tr>                
             </table>
         </form>    
     </body>

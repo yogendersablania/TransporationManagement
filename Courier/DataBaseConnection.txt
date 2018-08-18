@@ -1,3 +1,0 @@
-Name		:	agslo5ja_CourierTracking
-User		:	agslo5ja_admin
-Password	:	admin@1234

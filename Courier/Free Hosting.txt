@@ -1,7 +1,0 @@
-1. Red Hat OpenShift Online
-
-2. https://app.codeship.com
-
-3. http://www.hostkeeda.com/
-
-
