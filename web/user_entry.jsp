@@ -27,7 +27,7 @@
         <%@include file="header.jsp"%>
         <br/>
         <h1 align="center">CREATE USER</h1>
-        <form name="employee" action="user_validation.jsp" method="post" onsubmit="validateMyForm();">
+        <form name="employee" action="user_validation.jsp" method="post" onsubmit="formValidation();">
             <table width="60%" align="center">
                 <tr>
                     <td>
@@ -39,7 +39,7 @@
                     <td>
                         <div class="container">
                             <label for="uname"><b>Email *</b></label>
-                            <input type="text" placeholder="Enter Username" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Character only (min=6 and max=20)">
+                            <input type="email" placeholder="Enter Username" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Enter Email Only.">
                         </div>
                     </td>
                 </tr>
@@ -47,13 +47,13 @@
                     <td>
                         <div class="container">
                             <label><b>Password *</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">   
+                            <input type="password" placeholder="Enter Password" required name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">   
                         </div>                        
                     </td>
                     <td>
                         <div class="container">
                             <label for="uname"><b>Confirm Password *</b></label>
-                            <input type="password" placeholder="Enter Confirm Password" name="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                            <input type="password" placeholder="Enter Confirm Password" required name="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                         </div>
                     </td>
                 </tr>
@@ -61,17 +61,9 @@
                     <td>
                         <div class="container">
                             <label><b>Address *</b></label>
-                            <input type="text" placeholder="Enter Address" name="address" minlength="6" >
+                            <input type="text" placeholder="Enter Address" name="address" required minlength="6" >
                         </div>                        
                     </td>
-                    <td>
-                        <div class="container">
-                            <label for="psw"><b>City *</b></label>
-                            <input type="text" placeholder="Enter City" name="city"  required pattern="[0-9]{6}" title="Enter City Name in Character Only.">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
                     <td>
                         <div class="container">
                             <label><b>State *</b></label>
@@ -113,6 +105,15 @@
                                 <option value="Uttarakhand">Uttarakhand</option>
                                 <option value="West Bengal">West Bengal</option>
                             </select>
+                        </div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <label><b>City *</b></label>
+                            <input type="text" placeholder="Enter City" name="city"  required pattern="^[a-zA-Z]{3,40}$" title="Enter City Name in Character Only.">
                         </div>
                     </td>
                     <td>

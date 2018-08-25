@@ -27,11 +27,11 @@
                             <li class="parent">
                                 <a href="">Consignment Note</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/consignment_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;CN ENTRY</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignment_edit.jsp"><i class="icon-credit-card"></i>&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignment_delete.jsp"><i class="icon-gift"></i>&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignment_entry.jsp"><i class="icon-wrench"></i>CN ENTRY</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignment_edit.jsp"><i class="icon-credit-card"></i>Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignment_delete.jsp"><i class="icon-gift"></i>Delete</a></li>
                                     <li>
-                                        <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
+                                        <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consignment_list.jsp">CONSIGNMENT LIST</a></li>
                                             <li><a href="">Report 2</a></li>
@@ -41,14 +41,15 @@
                                     </li>
                                 </ul>
                             </li>
+                            <!--
                             <li class="parent">
                                 <a href="">Vehicle Hire Note</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/vhc_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;Create</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/vhc_edit.jsp"><i class="icon-credit-card"></i>&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/vhc_delete.jsp"><i class="icon-gift"></i>&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vhc_entry.jsp"><i class="icon-wrench"></i>Create</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vhc_edit.jsp"><i class="icon-credit-card"></i>Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vhc_delete.jsp"><i class="icon-gift"></i>Delete</a></li>
                                     <li>
-                                        <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
+                                        <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="">Report 1</a></li>
                                             <li><a href="">Report 2</a></li>
@@ -58,15 +59,16 @@
                                     </li>
                                 </ul>
                             </li>
+                            -->
                             <li class="parent">
                                 <a href="">Customer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">&nbsp;&nbsp;New Consigner</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">&nbsp;&nbsp;New Consignee</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_edit.jsp">&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_delete.jsp">&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">New Consigner</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">New Consignee</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/customer_edit.jsp">Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/customer_delete.jsp">Delete</a></li>
                                     <li>
-                                        <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
+                                        <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consigner_list.jsp">CONSIGNER LIST</a></li>
                                             <li><a href="${pageContext.request.contextPath}/consignee_list.jsp">CONSIGNEE LIST</a></li>
@@ -78,11 +80,11 @@
                             <li class="parent">
                                 <a href="">Vendor</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/vendor_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;Create</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/vendor_edit.jsp"><i class="icon-credit-card"></i>&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/vendor_delete.jsp"><i class="icon-gift"></i>&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vendor_entry.jsp"><i class="icon-wrench"></i>Create</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vendor_edit.jsp"><i class="icon-credit-card"></i>Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/vendor_delete.jsp"><i class="icon-gift"></i>Delete</a></li>
                                     <li>
-                                        <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
+                                        <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/viewReport.jsp">Consigner list</a></li>
                                             <li><a href="">Report 2</a></li>
@@ -96,11 +98,11 @@
                             <li class="parent">
                                 <a href="">User</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/user_entry.jsp">&nbsp;&nbsp;Create User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"></i>&nbsp;&nbsp;Edit User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"></i>&nbsp;&nbsp;Delete User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user_entry.jsp">Create User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/"></i>Edit User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/"></i>Delete User</a></li>
                                     <li>
-                                        <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
+                                        <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/user_list.jsp">User List</a></li>
                                         </ul>

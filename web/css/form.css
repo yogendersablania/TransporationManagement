@@ -14,7 +14,7 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password], input[type=submit], input[type=date]{
+input[type=text], input[type=password], input[type=email], input[type=submit], input[type=date]{
     width: 100%;
     padding: 10px 15px;
     margin: 5px 0;
