@@ -11,9 +11,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome</title>
     </head>
-    <body align="center">
-        <%@include file="header.jsp"%>
+    <%@include file="header.jsp"%>
+    <body>
         </br></br></br>
-        <h1><b>Welcome <%=session.getAttribute("username")%> !</b></h1>        
+        <h1 align="center"><b>Welcome <%=session.getAttribute("username")%> !</b></h1>        
     </body>
 </html>

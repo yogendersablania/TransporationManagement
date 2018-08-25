@@ -14,8 +14,8 @@
     </head>
     <body>
         <%@include file="header.jsp"%>
-        <h1 align="center">DELETE USER</h1>
-        <form name="employee" action="user_delete_list.jsp" method="post" onsubmit="formValidation()">
+        <h1 align="center">EDIT USER</h1>
+        <form name="employee" action="user_edit_list.jsp" method="post" onsubmit="formValidation()">
             <table width="60%" align="center">
                 <tr>
                     <td colspan="2">
@@ -51,7 +51,7 @@
                 <tr>
                     <td colspan="2" align="center">
                         <div class="container">
-                            <input type="submit" value="Delete" />
+                            <input type="submit" value="Edit" />
                         </div>
                     </td>
                 </tr>

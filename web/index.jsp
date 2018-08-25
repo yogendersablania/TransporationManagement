@@ -29,20 +29,18 @@
             }
 
         </script>
-        <script type="text/javascript" language="javascript">
-            var msg = "<%=request.getAttribute("Error")%>";
-            var ALERT_TITLE = "Oops!";
-            var ALERT_BUTTON_TEXT = "Ok";
-            if (msg.length > 0) {
-            alert(msg);
-            }
-        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SM EXPRESS</title>
     </head>
-    <body background="">
+    <body bgcolor="#99ccff">
+        <% if (request.getAttribute("Error") != null) {%>
+        <script type="text/javascript">
+            var dbResult = "<%=request.getAttribute("Error")%>";
+            alert(dbResult);
+        </script>
+        <% }%>
         <br/><br/><br/><br/>
-        <table width="40%" align="center" background="white">
+        <table width="40%" align="center" bgcolor="#ffffcc">
             <tr>
                 <td background="E8E6E5" align="center">
                     <div class="container" width="50px">

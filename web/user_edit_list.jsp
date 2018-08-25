@@ -13,30 +13,46 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="js/jspdf.js"></script>
-        <script src="js/jquery-2.1.3.js"></script>
-        <script src="js/pdfFromHTML.js"></script>
-        <title>USER LIST</title>        
+        <title>USER LIST</title>
     </head>
     <body>        
-        <%@include file="header.jsp"%>
-        <% if (request.getAttribute("Message") != null) {%>
-        <script type="text/javascript">
-            var dbResult = "<%=request.getAttribute("Message")%>";
-            alert(dbResult);
-        </script>
-        <% } %>
+        <%@include file="header.jsp"%>        
         <%
             try {
                 Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-                String sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees order by employees_id";
+
+                String type = request.getParameter("search_type");
+                String text = request.getParameter("search_text");
+                String sqlString = "";
+
+                switch (type) {
+                    case "Name":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_name LIKE '%" + text + "%' order by employees_id";
+                        break;
+                    case "Email":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_email LIKE '%" + text + "%' order by employees_id";
+                        break;
+                    case "Address":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_address LIKE '%" + text + "%' order by employees_id";
+                        break;
+                    case "State":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_state LIKE '%" + text + "%' order by employees_id";
+                        break;
+                    case "City":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_city LIKE '%" + text + "%' order by employees_id";
+                        break;
+                    case "Zip":
+                        sqlString = "select employees_id as ID, employees_name as NAME, CONCAT(employees_address,', ',employees_city,', ',employees_state,', ',employees_zip_code) as ADDRESS, employees_email as EMAIL from employees where employees_zip_code LIKE '%" + text + "%' order by employees_id";
+                        break;
+                }
+
                 Statement statement = connection.createStatement();
                 statement.executeQuery(sqlString);
                 ResultSet rs = statement.getResultSet();
-
         %>
-        <br/>        
+        <br/>
         <table width="50%" align="right">
+            <>
             <tr>
                 <td><input type="submit" value="Download .xls" /></td>
                 <td><input type="submit" value="Download .pdf"  onclick="HTMLtoPDF()"></td>
@@ -60,7 +76,7 @@
                     <td width="20%"> 
                         <label><b>NAME</b></label>                                      
                     </td>
-                    <td width="55%">
+                    <td width="45%">
                         <label><b>ADDRESS</b></label>              
                     </td>
                     <td width="20%">
@@ -73,7 +89,8 @@
                         <label><b>Delete</b></label>              
                     </td>
                 </tr>
-                <%                    int i = 0;
+                <%
+                    int i = 0;
                     while (rs.next()) {
                         if (i % 2 == 0) {
                 %>
