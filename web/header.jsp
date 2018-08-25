@@ -61,21 +61,20 @@
                             <li class="parent">
                                 <a href="">Customer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;New Consigner</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;New Consignee</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_edit.jsp"><i class="icon-credit-card"></i>&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_delete.jsp"><i class="icon-gift"></i>&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">&nbsp;&nbsp;New Consigner</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">&nbsp;&nbsp;New Consignee</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/customer_edit.jsp">&nbsp;&nbsp;Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/customer_delete.jsp">&nbsp;&nbsp;Delete</a></li>
                                     <li>
                                         <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consigner_list.jsp">CONSIGNER LIST</a></li>
                                             <li><a href="${pageContext.request.contextPath}/consignee_list.jsp">CONSIGNEE LIST</a></li>
-                                            <li><a href="">Report 3</a></li>
-                                            <li><a href="">Report 4</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
+                            <!--
                             <li class="parent">
                                 <a href="">Vendor</a>
                                 <ul class="sub-menu">
@@ -93,19 +92,17 @@
                                     </li>
                                 </ul>
                             </li>
+                            -->
                             <li class="parent">
-                                <a href="">Other</a>
+                                <a href="">User</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/user_entry.jsp"><i class="icon-wrench"></i>&nbsp;&nbsp;Create User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"><i class="icon-credit-card"></i>&nbsp;&nbsp;Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"><i class="icon-gift"></i>&nbsp;&nbsp;Delete</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user_entry.jsp">&nbsp;&nbsp;Create User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/"></i>&nbsp;&nbsp;Edit User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/"></i>&nbsp;&nbsp;Delete User</a></li>
                                     <li>
                                         <a class="parent" href="#"><i class="icon-file-alt"></i>&nbsp;&nbsp;Reports</a>
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/user_list.jsp">User List</a></li>
-                                            <li><a href="">Report 2</a></li>
-                                            <li><a href="">Report 3</a></li>
-                                            <li><a href="">Report 4</a></li>
                                         </ul>
                                     </li>
                                 </ul>

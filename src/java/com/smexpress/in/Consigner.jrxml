@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d399e616-d090-4f55-8e22-662a10386fbd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="consigner_id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[
+select 	
+consigner_id as ID,
+consigner_name  as NAME, 
+CONCAT(consigner_address1,
+ ', ',consigner_address2,
+ ', ',consigner_address3,
+ ', ',consigner_landmark,
+ ', ',consigner_city,
+ ', ',consigner_state, 
+ ', ',consigner_country,
+ ', ',consigner_pin) as ADDRESS,
+consigner_phone as PHONE,
+consigner_mobile as MOBILE,
+consigner_email as EMAIL,
+consigner_website as WEBSITE,
+consigner_gstin as GSTIN,
+consigner_pan as PAN
+
+from consigner
+
+where consigner_id = $P{consigner_id}]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="MOBILE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="WEBSITE" class="java.lang.String"/>
+	<field name="GSTIN" class="java.lang.String"/>
+	<field name="PAN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="226" y="19" width="100" height="20" uuid="b43696c0-a873-4243-a220-3f2644b4c504"/>
+				<text><![CDATA[CONSIGNER LIST]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="61" height="20" uuid="50987020-447d-47a0-ac97-900517359f89"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="0" width="61" height="20" uuid="dd578d7a-997c-4c81-beaa-3bde29b9de2c"/>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="0" width="61" height="20" uuid="8e4d10a4-fd6b-4ec1-9621-0ad1d2fab789"/>
+				<text><![CDATA[ADDRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="0" width="61" height="20" uuid="0b30b1ca-402c-4755-96df-6983bc4db33e"/>
+				<text><![CDATA[PHONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="0" width="61" height="20" uuid="36204d3d-a456-4380-81d6-fca090b58727"/>
+				<text><![CDATA[MOBILE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="0" width="61" height="20" uuid="0fb70e40-20e6-4c98-8977-bf26ec837d37"/>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="0" width="61" height="20" uuid="c523d570-6304-4a2f-bdfb-30f4dc428c7a"/>
+				<text><![CDATA[WEBSITE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="0" width="61" height="20" uuid="a30a070a-42bc-40ac-98e1-7e93d438b611"/>
+				<text><![CDATA[GSTIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="61" height="20" uuid="e55ad6b0-8b0c-4b8a-af8a-e48098b4661f"/>
+				<text><![CDATA[PAN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="61" height="20" uuid="d3d1d7b3-a51c-40ce-b9b5-c71afd65adcd"/>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="61" height="20" uuid="64727e5d-22d5-42ff-8993-49885763cb9e"/>
+				<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="0" width="61" height="20" uuid="4885ebe0-a22a-4dac-af4b-d602c1be4f7c"/>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="0" width="61" height="20" uuid="a4dd955d-a97e-45f4-86d9-e1d53fef8bd9"/>
+				<textFieldExpression><![CDATA[$F{PHONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="0" width="61" height="20" uuid="fbfb74af-8e51-4767-b5db-3cc1776302f8"/>
+				<textFieldExpression><![CDATA[$F{MOBILE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="0" width="61" height="20" uuid="10606a31-3783-4383-92f5-0e4a9a636558"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="366" y="0" width="61" height="20" uuid="cba1c130-602a-4e1d-a8ff-7b1de79eb8ad"/>
+				<textFieldExpression><![CDATA[$F{WEBSITE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="61" height="20" uuid="8144d2cd-f6bd-45d9-8c4d-7edc05762724"/>
+				<textFieldExpression><![CDATA[$F{GSTIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="0" width="61" height="20" uuid="398b0ee8-8ff2-4577-a2bd-85fb269973ca"/>
+				<textFieldExpression><![CDATA[$F{PAN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

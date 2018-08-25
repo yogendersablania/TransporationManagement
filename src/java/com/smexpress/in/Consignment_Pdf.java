@@ -5,16 +5,17 @@
  */
 package com.smexpress.in;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.lowagie.text.pdf.PdfTable;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 
 /**
  *
@@ -23,22 +24,15 @@ import java.sql.Statement;
 public class Consignment_Pdf {
 
     public static void main(String arg[]) {
+        String SourceFile = "D:\\Yogender\\NetBeansProjects\\TransporationManagement\\src\\java\\com\\smexpress\\in\\Consigner.jrxml";
         try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(SourceFile);
+
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-            Statement statement = connection.createStatement();
-            String sqlString = "SELECT * FROM employees";
-            statement.executeQuery(sqlString);
-            ResultSet rs = statement.getResultSet();
-            ResultSetMetaData resultSetMetaData = rs.getMetaData();
-            int colno = resultSetMetaData.getColumnCount();
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("E:\\consignment.pdf"));
-            PdfPTable pdfTable = new PdfPTable(colno);
-            document.open();
-            document.add(new Paragraph("CONSIGNMENT NOTE"));
-            pdfTable.addCell(rs.getString(0));
-            document.close();
-        } catch (Exception e) {
+            JasperPrint print = JasperFillManager.fillReport(SourceFile, null, connection);
+            OutputStream output = new FileOutputStream(new File("c:/catalog.pdf"));
+            JasperExportManager.exportReportToPdfStream(print, output);
+        } catch (FileNotFoundException | JRException e) {
             System.out.println(e.getMessage());
         }
     }
