@@ -99,8 +99,8 @@
                                 <a href="">User</a>
                                 <ul class="sub-menu">
                                     <li><a href="${pageContext.request.contextPath}/user_entry.jsp">Create User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"></i>Edit User</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/"></i>Delete User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user_edit.jsp"></i>Edit User</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/user_delete_search.jsp"></i>Delete User</a></li>
                                     <li>
                                         <a class="parent" href="#"><i class="icon-file-alt"></i>Reports</a>
                                         <ul class="sub-menu">
