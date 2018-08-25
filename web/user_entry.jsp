@@ -27,8 +27,17 @@
         <%@include file="header.jsp"%>
         <br/>
         <h1 align="center">CREATE USER</h1>
-        <form name="employee" action="user_validation.jsp" method="post" onsubmit="formValidation();">
+        <form name="employee" action="user_validation.jsp" method="post" onsubmit="formValidation()">
             <table width="60%" align="center">
+                <tr>
+                    <td colspan="2">
+                        <%
+                            if (request.getAttribute("Message") != null) {
+                        %>
+                        <%=request.getAttribute("Message")%>
+                        <%}%>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <div class="container">
@@ -39,7 +48,7 @@
                     <td>
                         <div class="container">
                             <label for="uname"><b>Email *</b></label>
-                            <input type="email" placeholder="Enter Username" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Enter Email Only.">
+                            <input type="email" placeholder="Enter Username" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" title="Enter Email Only.">
                         </div>
                     </td>
                 </tr>
@@ -107,13 +116,13 @@
                             </select>
                         </div>
                     </td>
-                    
+
                 </tr>
                 <tr>
                     <td>
                         <div class="container">
                             <label><b>City *</b></label>
-                            <input type="text" placeholder="Enter City" name="city"  required pattern="^[a-zA-Z]{3,40}$" title="Enter City Name in Character Only.">
+                            <input type="text" placeholder="Enter City" name="city"  required pattern="^[a-zA-Z ]{3,40}$" title="Enter City Name in Character Only.">
                         </div>
                     </td>
                     <td>

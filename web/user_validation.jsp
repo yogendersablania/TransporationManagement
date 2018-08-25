@@ -19,11 +19,11 @@
         <%
             try {
                 String name = request.getParameter("name").toString().trim();
+                String email = request.getParameter("email").toString().trim().toLowerCase();
+                String pass = request.getParameter("password").toString().trim();
+                String cpass = request.getParameter("confirm_password").toString().trim();
                 String address = request.getParameter("address").toString().trim();
                 String state = request.getParameter("state").toString().trim();
-                String pass = request.getParameter("password").toString().trim();
-                String email = request.getParameter("email").toString().trim().toLowerCase();
-                String cpass = request.getParameter("confirm_password").toString().trim();                
                 String city = request.getParameter("city").toString().trim();
                 String pin = request.getParameter("pin").toString().trim();
 
@@ -42,23 +42,31 @@
                 int rowscount = rs1.getInt(1);
                 int id = rs2.getInt(1) + 1;
 
-                if (rowscount == 0) {
-                    rowscount++;
-                    String sqlString3 = "INSERT INTO employees(employees_id, employees_name, employees_password, employees_address, employees_city, employees_state, employees_zip_code) VALUES ( '" + id + "','" + name + "','" + pass + "','" + address + "','" + city + "','" + state + "','" + pin + "')";
-                    Statement statement3 = connection.createStatement();
-                    statement3.executeUpdate(sqlString3);
+                if (pass == cpass) {
                     RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");
-                    request.setAttribute("flag", true);
+                    request.setAttribute("Message", "Password and Confirm Password not same.");
                     requestDispatcher.forward(request, response);
-                    connection.close();
                 } else {
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");
-                    request.setAttribute("flag", false);
-                    requestDispatcher.forward(request, response);
-                    connection.close();
+                    if (rowscount == 0) {
+                        rowscount++;
+                        String sqlString3 = "INSERT INTO employees(employees_id, employees_name, employees_email, employees_password, employees_address, employees_city, employees_state, employees_zip_code) VALUES ( '" + id + "','" + name + "','" + email + "','" + pass + "','" + address + "','" + city + "','" + state + "','" + pin + "')";
+                        Statement statement3 = connection.createStatement();
+                        statement3.executeUpdate(sqlString3);
+                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");
+                        request.setAttribute("Message", "User successfully entered in system.");
+                        requestDispatcher.forward(request, response);
+                        connection.close();
+                    } else {
+                        RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");
+                        request.setAttribute("Message", "User name already exist");
+                        requestDispatcher.forward(request, response);
+                        connection.close();
+                    }
                 }
             } catch (Exception e) {
-                out.println(e.getMessage().toString());
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");
+                request.setAttribute("Message", e.getMessage().toString());
+                requestDispatcher.forward(request, response);
             }
         %>
     </body>
