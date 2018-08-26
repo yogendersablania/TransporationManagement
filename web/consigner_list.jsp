@@ -17,6 +17,12 @@
     </head>
     <body>        
         <%@include file="header.jsp"%>
+        <% if (request.getAttribute("Message") != null) {%>
+        <script type="text/javascript">
+            var dbResult = "<%=request.getAttribute("Message")%>";
+            alert(dbResult);
+        </script>
+        <% } %>
         <%
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
             String sqlString = "select consigner_id as ID, consigner_name as NAME, CONCAT(consigner_address1,', ',consigner_address2,', ',consigner_address3,', ',consigner_landmark,', ',consigner_city,', ',consigner_state,', ',consigner_country,', ',consigner_pin) as ADDRESS, consigner_phone as PHONE, consigner_mobile as MOBILE, consigner_email as EMAIL, consigner_website as WEBSITE, consigner_gstin as GSTIN, consigner_pan as PAN from consigner order by consigner_id";
@@ -51,6 +57,8 @@
                 <td width="10%"><label><b>WEBSITE</b></label></td>
                 <td width="8%"><label><b>GSTIN</b></label></td>
                 <td width="5%"><label><b>PAN</b></label></td>
+                <td width="5%"><label><b>EDIT</b></label></td>
+                <td width="5%"><label><b>DELETE</b></label></td>
             </tr>
             <%
                 int i = 0;
@@ -67,6 +75,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
+                <td><a href="consigner_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="consigner_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%} else {%>
             <tr bgcolor="white">
@@ -79,6 +89,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
+                <td><a href="consigner_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="consigner_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%}
                     i++;

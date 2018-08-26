@@ -51,6 +51,10 @@
                 <td width="10%"><label><b>WEBSITE</b></label></td>
                 <td width="8%"><label><b>GSTIN</b></label></td>
                 <td width="5%"><label><b>PAN</b></label></td>
+                <td width="5%"><label><b>EDIT</b></label></td>
+                <td width="5%"><label><b>DELETE</b></label></td>
+                <td width="5%"><label><b>EDIT</b></label></td>
+                <td width="5%"><label><b>DELETE</b></label></td>
             </tr>
             <%
                 int i = 0;
@@ -67,6 +71,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
+                <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="consignee_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%} else {%>
             <tr bgcolor="white">
@@ -79,6 +85,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
+                <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="consignee_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%}
                     i++;

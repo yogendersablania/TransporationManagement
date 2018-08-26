@@ -15,9 +15,29 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>CREATE CONSIGNER</title>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#country').on('change', function(){
+                   $countryName = $this.val();
+                   if(countryName){
+                       $.ajax({
+                           type:'POST'
+                       })
+                   }else{
+                       
+                   }
+                });
+            });
+        </script>
     </head>
     <body>
         <%@include file="header.jsp"%>
+        <% if (request.getAttribute("Message") != null) {%>
+        <script type="text/javascript">
+            var dbResult = "<%=request.getAttribute("Message")%>";
+            alert(dbResult);
+        </script>
+        <% } %>
         <br/>
         <h1 align="center">CREATE CONSIGNER</h1>        
         <form name="cnentry" action="consignment_validation.jsp" method="POST">

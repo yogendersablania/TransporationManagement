@@ -63,15 +63,35 @@
                             <li class="parent">
                                 <a href="">Customer</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">New Consigner</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">New Consignee</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_edit.jsp">Alter</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/customer_delete.jsp">Delete</a></li>
+                                    <li>
+                                        <a class="parent" href="#">Create</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">Create Consigner</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">Create Consignee</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="parent" href="#">Edit</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">Edit Consigner</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">Edit Consignee</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a class="parent" href="#">Delete</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="${pageContext.request.contextPath}/consigner_delete_search.jsp">Delete Consigner</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consignee_delete_search.jsp">Delete Consignee</a></li>
+
+                                        </ul>
+                                    </li>
                                     <li>
                                         <a class="parent" href="#">Reports</a>
                                         <ul class="sub-menu">
-                                            <li><a href="${pageContext.request.contextPath}/consigner_list.jsp">CONSIGNER LIST</a></li>
-                                            <li><a href="${pageContext.request.contextPath}/consignee_list.jsp">CONSIGNEE LIST</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consigner_list.jsp">Consigner List</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consignee_list.jsp">Consigner List</a></li>
                                         </ul>
                                     </li>
                                 </ul>
