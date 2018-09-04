@@ -4,21 +4,50 @@
     Author     : User
 --%>
 
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="css/form.css">
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
-        <script>
-            function formValidation() {
-                var pass = document.getElementById('password');
-                var cpass = document.getElementById('confirm_password');
-                if (pass.value != cpass.value) {
-                    alert("Password and confirm passform not matching.");
-                    pass.focus();
-                    pass.style.color = "yellow";
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function checkPasswordMatch() {
+                var password = $("#password").val();
+                var confirmPassword = $("#confirm_password").val();
+
+                if (password != confirmPassword) {
+                    alert("Password did not matched.");                    
                 }
+            }
+
+            $(document).ready(function () {
+                $("#password, #confirm_password").change(checkPasswordMatch);
+            });
+
+            function countryselect(countryval) {
+                $.ajax({
+                    url: 'select_state.jsp',
+                    type: 'POST',
+                    data: {countryid: countryval},
+                    success: function (result) {
+                        $('#state1').html(result);
+                    }
+                });
+            }
+
+            function stateselect(stateval) {
+                $.ajax({
+                    url: 'select_city.jsp',
+                    type: 'POST',
+                    data: {stateid: stateval},
+                    success: function (result) {
+                        $('#city1').html(result);
+                    }
+                });
             }
         </script>
         <title>CREATE USER</title>
@@ -27,7 +56,7 @@
         <%@include file="header.jsp"%>
         <br/>
         <h1 align="center">CREATE USER</h1>
-        <form name="employee" action="user_validation.jsp" method="post" onsubmit="formValidation()">
+        <form name="employee" action="user_validation.jsp" method="post">
             <table width="60%" align="center">
                 <tr>
                     <td colspan="2">
@@ -56,13 +85,13 @@
                     <td>
                         <div class="container">
                             <label><b>Password *</b></label>
-                            <input type="password" placeholder="Enter Password" required name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">   
+                            <input type="password" placeholder="Enter Password" required id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">   
                         </div>                        
                     </td>
                     <td>
                         <div class="container">
                             <label for="uname"><b>Confirm Password *</b></label>
-                            <input type="password" placeholder="Enter Confirm Password" required name="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                            <input type="password" placeholder="Enter Confirm Password" required id="confirm_password" name="confirm_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onchange="password_validation()">
                         </div>
                     </td>
                 </tr>
@@ -75,54 +104,52 @@
                     </td>
                     <td>
                         <div class="container">
-                            <label><b>State *</b></label>
-                            <select name="state" pattern="^[a-zA-Z]$" title="Character only (min=6 and max=20)">
-                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                <option value="Assam">Assam</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Chandigarh">Chandigarh</option>
-                                <option value="Chhattisgarh">Chhattisgarh</option>
-                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                                <option value="Daman and Diu">Daman and Diu</option>
-                                <option value="NCT of Delhi">NCT of Delhi</option>
-                                <option value="Goa">Goa</option>
-                                <option value="Gujarat">Gujarat</option>
-                                <option value="Haryana">Haryana</option>
-                                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                <option value="Jharkhand">Jharkhand</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Kerala">Kerala</option>
-                                <option value="Lakshadweep">Lakshadweep</option>
-                                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="Manipur">Manipur</option>
-                                <option value="Meghalaya">Meghalaya</option>
-                                <option value="Mizoram">Mizoram</option>
-                                <option value="Nagaland">Nagaland</option>
-                                <option value="Odisha">Odisha</option>
-                                <option value="Puducherry">Puducherry</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Rajasthan">Rajasthan</option>
-                                <option value="Sikkim">Sikkim</option>
-                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                <option value="Telangana">Telangana</option>
-                                <option value="Tripura">Tripura</option>
-                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                <option value="Uttarakhand">Uttarakhand</option>
-                                <option value="West Bengal">West Bengal</option>
-                            </select>
-                        </div>
+                            <label><b>LandMark</b></label>
+                            <input type="text" placeholder="Enter LandMark" name="landmark">
+                        </div>                        
                     </td>
-
                 </tr>
                 <tr>
                     <td>
                         <div class="container">
-                            <label><b>City *</b></label>
-                            <input type="text" placeholder="Enter City" name="city"  required pattern="^[a-zA-Z ]{3,40}$" title="Enter City Name in Character Only.">
+                            <%
+                                try {
+
+                                    Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
+                                    String sqlString1 = "select id, name  from countries order by name";
+                                    Statement statement1 = connection.createStatement();
+                                    statement1.executeQuery(sqlString1);
+                                    ResultSet rs1 = statement1.getResultSet();
+
+                            %>                           
+                            <label><b>Country *</b></label>
+                            <select name="country" id="country" required onchange="countryselect(this.value)">
+                                <option value="0">Select Country</option>
+                                <%                                    while (rs1.next()) {
+                                %>
+                                <option value="<%=rs1.getString("id").toString()%>"><%=rs1.getString("name").toString()%></option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <label><b>State *</b></label>
+                        <div class="container" id="state1">
+                            <select name="state" id="state" required>
+                                <option value="0">Select State *</option> 
+                            </select>
+                        </div>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label><b>City *</b></label>
+                        <div class="container" id="city1">
+                            <select name="city" id="city" required>
+                                <option value="0">Select City *</option> 
+                            </select>
                         </div>
                     </td>
                     <td>
@@ -140,6 +167,11 @@
                     </td>
                 </tr>
             </table>
+            <%
+                } catch (Exception e) {
+
+                }
+            %>
         </form>    
     </body>
 </html>

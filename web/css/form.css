@@ -16,7 +16,16 @@ form {
 /* Full-width inputs */
 input[type=text], input[type=password], input[type=email], input[type=submit], input[type=date]{
     width: 100%;
-    padding: 10px 15px;
+    padding: 7px 7px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=submit]{
+    width: 200px;
+    padding: 7px 7px;
     margin: 5px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -26,7 +35,7 @@ input[type=text], input[type=password], input[type=email], input[type=submit], i
 /* Set a style for all buttons */
 Select {
     width: 100%;
-    padding: 10px 10px;
+    padding: 7px 7px;
     margin: 5px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -37,7 +46,7 @@ Select {
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 14px 10px;
+    padding: 7px 7px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -52,7 +61,7 @@ button:hover {
 /* Extra style for the cancel button (red) */
 .cancelbtn {
     width: auto;
-    padding: 10px 18px;
+    padding: 7px 7px;
     background-color: #f44336;
 }
 
@@ -70,7 +79,7 @@ img.avatar {
 
 /* Add padding to containers */
 .container {
-    padding: 5px;
+    padding: 3px;
 }
 
 

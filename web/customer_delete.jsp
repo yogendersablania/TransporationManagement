@@ -11,7 +11,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>DELETE USER</title>
     </head>
     <body>
@@ -19,10 +18,10 @@
         <%
             String ID = request.getParameter("ID");
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-            String sqlString = "DELETE FROM employees Where employees_id = '" + ID + "'";
+            String sqlString = "DELETE FROM customer Where customer_id = '" + ID + "'";
             Statement statement = connection.createStatement();
             statement.executeUpdate(sqlString);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_list.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("customer_list.jsp");
             request.setAttribute("Message", "Record Deleted");
             requestDispatcher.forward(request, response);
             connection.close();

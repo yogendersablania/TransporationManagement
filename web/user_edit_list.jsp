@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>USER LIST</title>
     </head>
     <body>        
@@ -55,7 +56,7 @@
             <>
             <tr>
                 <td><input type="submit" value="Download .xls" /></td>
-                <td><input type="submit" value="Download .pdf"  onclick="HTMLtoPDF()"></td>
+                <td><input type="submit" value="Download .pdf" ></td>
                 <td><input type="submit" value="Download .csv" /></td>
                 <td><input type="submit" value="Download .doc" /></td>
             </tr>

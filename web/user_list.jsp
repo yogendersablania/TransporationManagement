@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jspdf.js"></script>
         <script src="js/jquery-2.1.3.js"></script>
         <script src="js/pdfFromHTML.js"></script>
@@ -82,7 +83,7 @@
                     <td><%=rs.getString("NAME").toString()%></td>
                     <td><%=rs.getString("ADDRESS").toString()%></td>
                     <td><%=rs.getString("EMAIL").toString()%></td>
-                    <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                    <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"/><img src="images\edit.png" height='20' width='20'/></a></td>
                     <td><a href="user_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
                 </tr>
                 <%} else {%>
@@ -91,7 +92,7 @@
                     <td><%=rs.getString("NAME").toString()%></td>
                     <td><%=rs.getString("ADDRESS").toString()%></td>
                     <td><%=rs.getString("EMAIL").toString()%></td>
-                    <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\edit.png" height='20' width='20'/></a></td>
+                    <td><a href="user_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"/><img src="images\edit.png" height='20' width='20'/></a></td>
                     <td><a href="user_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
                         <%}
                                 i++;

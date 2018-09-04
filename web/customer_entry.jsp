@@ -14,6 +14,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>CREATE CONSIGNER</title>
         <script type="text/javascript">
             function countryselect(countryval) {
@@ -48,7 +49,7 @@
         </script>
         <% } %>
         <br/>
-        <h1 align="center">CREATE CONSIGNER</h1>        
+        <h1 align="center">CREATE CUSTOMER</h1>        
         <form name="cnentry" action="customer_validation.jsp" method="POST">
             <table width="90%" align="center">
                 <%if (request.getAttribute("Message") != null) {%>
@@ -58,7 +59,7 @@
                 <tr valign="top">
                     <td width="33%">
                         <div class="container">
-                            <input type="hidden" name="flag" value="consigner">
+                            <input type="hidden" name="flag" value="customer">
 
                             <label for="name"><b>Name *</b></label>
                             <input type="text" placeholder="Enter Consigner Name" name="name" required>
@@ -145,13 +146,6 @@
                         </div>
                     </td>
                 </tr>
-                <tr>               
-                    <td colspan="3" align="center">
-                        <div class="container">
-                            <input type="submit" Value="Create" />
-                        </div>
-                    </td>
-                </tr> 
             </table>
 
         </form>    

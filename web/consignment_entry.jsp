@@ -1,237 +1,419 @@
+<%-- 
+    Document   : customer_entry
+    Created on : Jul 21, 2018, 8:30:07 PM
+    Author     : User
+--%>
 
-<%@page import="com.mysql.jdbc.StringUtils"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<link rel="stylesheet" type="text/css" href="css/multipageform.css">
-<html class="myFontClass">    
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="css/form.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
     <head>
-        <script type="text/javascript" src="js/multipageform.js"></script>    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SM EXPRESS</title>
-        <script type="text/javascript" language="javascript">
-            function get_values()
-            {
-                var consignerID = document.getElementById("consigner").value.toString();
-                var consigneeID = document.getElementById("consignee").value.toString();
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>CONSIGNMENT NOTE ENTRY</title>
+        <script language="javascript">
+            function addRow(tableID) {
 
-                if (consignerID == 0) {
-                    alert("Select a Consigner.");
-                } else if (consigneeID == 0) {
-                    alert("Select a Consignee.");
+                var table = document.getElementById(tableID);
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                var colCount = table.rows[0].cells.length;
+                for (var i = 0; i < colCount; i++) {
+
+                    var newcell = row.insertCell(i);
+                    newcell.innerHTML = table.rows[0].cells[i].innerHTML;
+                    //alert(newcell.childNodes);
+                    switch (newcell.childNodes[0].type) {
+                        case "text":
+                            newcell.childNodes[0].value = "";
+                            break;
+                        case "checkbox":
+                            newcell.childNodes[0].checked = false;
+                            break;
+                        case "select-one":
+                            newcell.childNodes[0].selectedIndex = 0;
+                            break;
+                    }
                 }
-                document.getElementById("consignerid").value = consignerID;
+            }
+
+            function deleteRow(tableID) {
+                try {
+                    var table = document.getElementById(tableID);
+                    var rowCount = table.rows.length;
+                    for (var i = 0; i < rowCount; i++) {
+                        var row = table.rows[i];
+                        var chkbox = row.cells[0].childNodes[0];
+                        if (null != chkbox && true == chkbox.checked) {
+                            if (rowCount <= 1) {
+                                alert("Cannot delete all the rows.");
+                                break;
+                            }
+                            table.deleteRow(i);
+                            rowCount--;
+                            i--;
+                        }
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            }
+
+            function cnselect(bookval) {
+                $.ajax({
+                    url: 'select_cn.jsp',
+                    type: 'POST',
+                    data: {bookid: bookval},
+                    success: function (result) {
+                        $('#cnnumber1').html(result);
+                    }
+                });
+            }
+
+            function customerselect(customerval) {
+                $.ajax({
+                    url: 'select_customer.jsp',
+                    type: 'POST',
+                    data: {custid: customerval},
+                    success: function (result) {
+                        $('#customer1').html(result);
+                    }
+                });
+            }
+
+            function consignerselect(consignerval) {
+                $.ajax({
+                    url: 'select_consigner.jsp',
+                    type: 'POST',
+                    data: {consignerid: consignerval},
+                    success: function (result) {
+                        $('#consigner1').html(result);
+                    }
+                });
+            }
+
+            function consigneeselect(consigneeval) {
+                $.ajax({
+                    url: 'select_consignee.jsp',
+                    type: 'POST',
+                    data: {consigneeid: consigneeval},
+                    success: function (result) {
+                        $('#consignee1').html(result);
+                    }
+                });
             }
         </script>
     </head>
     <body>
-        <%@include file="header.jsp"%><br/>
-        <form name="loginform" action="loginvalidation.jsp" method="post" onSubmit="return inputvalidation();">
-            <table align="center">
+        <%@include file="header.jsp"%>
+        <% if (request.getAttribute("Message") != null) {%>
+        <script type="text/javascript">
+            var dbResult = "<%=request.getAttribute("Message")%>";
+            alert(dbResult);
+        </script>
+        <% } %>
+        <br/>
+        <h1 align="center">CONSIGNMENT ENTRY</h1>
+        <%
+            try {
+
+                Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
+                String sqlString1 = "select consigner_id, consigner_name, consigner_state from consigner order by consigner_name";
+                String sqlString2 = "select consignee_id, consignee_name, consignee_state from consignee order by consignee_name";
+                String sqlString3 = "select customer_id, customer_name, customer_state from customer order by customer_name";
+                String sqlString4 = "select * from cn_book order by id";
+                Statement statement1 = connection.createStatement();
+                Statement statement2 = connection.createStatement();
+                Statement statement3 = connection.createStatement();
+                Statement statement4 = connection.createStatement();
+                statement1.executeQuery(sqlString1);
+                statement2.executeQuery(sqlString2);
+                statement3.executeQuery(sqlString3);
+                statement4.executeQuery(sqlString4);
+                ResultSet rs1 = statement1.getResultSet();
+                ResultSet rs2 = statement2.getResultSet();
+                ResultSet rs3 = statement3.getResultSet();
+                ResultSet rs4 = statement4.getResultSet();
+        %>
+        <form name="cnentry" action="consignment_validation.jsp" method="post" onsubmit="validateMyForm();">
+            <table width="90%" align="center">
+                <%if (request.getAttribute("Message") != null) {%>
+                <tr><td colspan="3"><b><font color="blue"><%=request.getAttribute("Message")%></font></b></td></tr>
+                            <%}%>
                 <tr>
-                    <td background="E8E6E5">                    
-                        <div class="form" align="center">
-                            <h2 align="center"><label><b>CONSIGNMENT NOTE ENTRY</b></label></h2>                           
-                            <input id="one" type="radio" name="stage" checked="checked" />
-                            <input id="two" type="radio" name="stage" onchange="get_values();"/>
-                            <input id="three" type="radio" name="stage" />
-                            <input id="four" type="radio" name="stage" />
-                            <input id="five" type="radio" name="stage" />
-                            <input id="six" type="radio" name="stage" />
+                    <td colspan="2">
+                        <TABLE id="dataTable">
+                            <TR>
+                                <TD width="33%">
+                                    <label><b>CN BOOK NUMBER *</b></label>
+                                    <select name="book" id="book" required onchange="cnselect(this.value)">
+                                        <option value="0">Select a Book</option>
+                                        <%
+                                            while (rs4.next()) {
+                                        %>
+                                        <option value="<%=rs4.getString("id").toString()%>"><%=rs4.getString("cn_book_no").toString()%></option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                </TD>
+                                <TD width="33%">
+                                    <label><b>CN NUMBER *</b></label>
+                                    <div class="container" id="cnnumber1">
+                                        <select name="cnnumber" id="cnnumber" required>
+                                            <option value="0">Select CN Number *</option> 
+                                        </select>
+                                    </div> 
+                                </TD>
+                                <td>
+                                    <div class="container">
+                                        <label><b>DATE *</b></label>
+                                        <input type="date" placeholder="Enter DATE" name="date">
+                                    </div>
+                                </td>
+                            </TR>
+                        </TABLE>
 
-                            <div class="stages">
-                                <label for="one">1</label>
-                                <label for="two">2</label>
-                                <label for="three">3</label>
-                                <label for="four">4</label>
-                                <label for="five">5</label>
-                                <label for="six">6</label>
-                            </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width='33%'>
+                        <div class="container">
+                            <label><b>SELECT CUSTOMER *</b></label>
+                            <select name="customer" id="customer" required onchange="customerselect(this.value)">
+                                <option value="0">Select Customer</option>
+                                <%
+                                    while (rs3.next()) {
+                                %>
+                                <option value="<%=rs3.getString("customer_id").toString()%>"><%=rs3.getString("customer_name").toString()%> - <%=rs3.getString("customer_state").toString()%></option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="container" id="customer1"></div>
+                    </td>
+                </tr>
 
-                            <span class="progress"><span></span></span>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <label><b>SELECT CONSIGNER *</b></label>
+                            <select name="consigner" id="consigner" required onchange="consignerselect(this.value)">
+                                <option value="0">Select Consigner</option>
+                                <%
+                                    while (rs1.next()) {
+                                %>
+                                <option value="<%=rs1.getString("consigner_id").toString()%>"><%=rs1.getString("consigner_name").toString()%> - <%=rs1.getString("consigner_state").toString()%></option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="container" id="consigner1"></div>
+                    </td>
+                </tr>
 
-                            <div class="panels">
-                                <div data-panel="one">                                    
-                                    <h3 align="center"><label><b>BASIC DETAIL</b></label></h3>
-                                    <br/>
-                                    <%
-                                        try {
+                <tr>
+                    <td>
+                        <div class="container">
+                            <label><b>SELECT CONSIGNEE *</b></label>
+                            <select name="consignee" id="consignee" required onchange="consigneeselect(this.value)">
+                                <option value="0">Select Customer</option>
+                                <%
+                                    while (rs2.next()) {
+                                %>
+                                <option value="<%=rs2.getString("consignee_id").toString()%>"><%=rs2.getString("consignee_name").toString()%> - <%=rs2.getString("consignee_state").toString()%></option>
+                                <%
+                                    }
+                                %>
+                            </select>
+                        </div>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="container" id="consignee1"></div>
+                    </td>
+                </tr>
 
-                                            Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-                                            String sqlString1 = "select consigner_id as ID, CONCAT(consigner_name,', ',consigner_address1,', ',consigner_address2,', ',consigner_address3,', ',consigner_landmark,', ',consigner_city,', ',consigner_state,', ',consigner_country,', ',consigner_pin) as CONSIGNER from consigner order by consigner_name";
-                                            String sqlString2 = "select consignee_id as ID, CONCAT(consignee_name,', ',consignee_address1,', ',consignee_address2,', ',consignee_address3,', ',consignee_landmark,', ',consignee_city,', ',consignee_state,', ',consignee_country,', ',consignee_pin) as CONSIGNEE from consignee order by consignee_name";
-
-                                            Statement statement1 = connection.createStatement();
-                                            Statement statement2 = connection.createStatement();
-
-                                            statement1.executeQuery(sqlString1);
-                                            statement2.executeQuery(sqlString2);
-
-                                            ResultSet rs1 = statement1.getResultSet();
-                                            ResultSet rs2 = statement2.getResultSet();
-
-                                    %>
-                                    <table border="0" align="center" cellpadding="3">
-                                        <tr>
-                                            <td width="15%"><label><b>CN NUMBER * : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Enter CN NUMBER" name="cnnumber" id="cnnumber"></td>
-                                            <td width="15%"><label><b>CONSIGNER *</b></label></td>
-                                            <td width="19%">
-                                                <select name="consigner" id="consigner" required onchange="get_values();">
-                                                    <option value="0">Select Consigner</option>
-                                                    <%                                                        while (rs1.next()) {
-                                                    %>
-                                                    <option value="<%=rs1.getString("ID").toString()%>"><%=rs1.getString("CONSIGNER").toString()%></option>
-                                                    <%
-                                                        }
-                                                    %>
-                                                </select>
-                                            </td>
-                                            <td width="15%"><label><b>CONSIGNEE *</b></label></td>
-                                            <td width="19%">
-                                                <select name="consignee" id="consignee" required>
-                                                    <option value="0">Select Consignee</option>
-                                                    <%
-                                                        while (rs2.next()) {
-                                                    %>                                                    
-                                                    <option value="<%=rs2.getString("ID").toString()%>"><%=rs2.getString("CONSIGNEE").toString()%></option>
-                                                    <%
-                                                        }
-                                                    %>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>RISK *</b></label></td>
-                                            <td width="19%">
-                                                <select name="risk" required>
-                                                    <option value="OWNER">OWNER</option>
-                                                    <option value="CONSIGNER">CONSIGNER</option>
-                                                    <option value="CONSIGNEE">CONSIGNEE</option>
-                                                    <option value="TRANSPOTER">TRANSPOTER</option>
-                                                </select>
-                                            </td>
-                                            <td width="15%"><label><b>DATE *</b></label></td>
-                                            <td width="19%"><input type="date" placeholder="Enter DATE" name="consigner"></td>
-                                            <td width="15%"><label><b>PAY BASIS *</b></label></td>
-                                            <td width="19%">
-                                                <select name="paybasis" required>
-                                                    <option value="paid">PAID</option>
-                                                    <option value="topay">TOPAY</option>
-                                                    <option value="tobebilled">TO BE BILLED</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>MOD *</b></label></td>
-                                            <td width="19%">
-                                                <select name="mod" required>
-                                                    <option value="air">AIR</option>
-                                                    <option value="rail">RAIL</option>
-                                                    <option value="road">ROAD</option>
-                                                </select>
-                                            </td>                                            
-                                            <td width="15%"><label><b>SERVICE TYPE *</b></label></td>
-                                            <td width="19%">
-                                                <select name="servicetype" required>
-                                                    <option value="FULL TRUCK">FULL TRUCK</option>
-                                                    <option value="PART LOAD">PART LOAD</option>
-                                                    <option value="PACKAGE">PACKAGE</option>
-                                                </select>
-                                            </td>
-                                            <td width="15%"><label><b>GST PAID BY *</b></label></td>
-                                            <td width="19%">
-                                                <select name="gstpaidby" required>
-                                                    <option value="CONSIGNER">CONSIGNER</option>
-                                                    <option value="CONSIGNEE">CONSIGNEE</option>
-                                                    <option value="TRANSPOTER">TRANSPOTER</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <%} catch (Exception e) {%>
-                                <%=e.getMessage()%>    
-                                <%}%>
-
-
-
-                                <div data-panel="two">
-                                    <table border="0" align="center" cellpadding="3">
-                                        <tr>
-                                            <td width="15%" colspan="3"><label><b>CUSTOMER ID  : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Enter CUSTOMER ID" name="consignerid" id="consignerid" readonly></td>
-                                            <td width="19%"><input type='submit' Value="Get Data"></input></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>NAME : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>CITY : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>MOBILE : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>ADDRESS 1 : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>STATE : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>EMAIL : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>ADDRESS 2 : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>COUNTRY : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>WEBSITE :</b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>ADDRESS 3 : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>PIN : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>GSTIN : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                        </tr>
-                                        <tr>
-                                            <td width="15%"><label><b>LANDMARK : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>PHONE : </b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                            <td width="15%"><label><b>PAN :</b></label></td>
-                                            <td width="19%"><input type="text" placeholder="Select Consigner" readonly=""></td>
-                                        </tr>
-                                    </table>
-                                    </form>         
-                                </div>
-
-
-
-
-                                <div data-panel="three">
-                                    <h4>Consigner Entry</h4>
-                                    <input type="text" placeholder="Address" />
-                                </div>
-                                <div data-panel="four">
-                                    <h4>Product Entry</h4>
-                                    <input type="text" placeholder="Email" />
-                                </div>
-                                <div data-panel="five">
-                                    <h4>Insurance Entry</h4>
-                                    <input type="text" placeholder="Phone Number" />
-                                </div>
-                                <div data-panel="six">
-                                    <h4>Freight</h4>
-                                    <input type="text" placeholder="Comment" />
-                                </div>
-                            </div>                            
-                            <!--<button>Next</button>-->
+                <tr>
+                    <td width='33%'>
+                        <div class="container">
+                            <label><b>RISK *</b></label>
+                            <select name="risk" required>
+                                <option value="OWNER">OWNER</option>
+                                <option value="CONSIGNER">CONSIGNER</option>
+                                <option value="CONSIGNEE">CONSIGNEE</option>
+                                <option value="TRANSPOTER">TRANSPOTER</option>
+                            </select>
+                        </div>                        
+                    </td>
+                    <td width='33%'>
+                        <div class="container">
+                            <label><b>PAY BASIS *</b></label>
+                            <select name="paybasis" required>
+                                <option value="tobebilled">TO BE BILLED</option>
+                                <option value="paid">PAID</option>
+                                <option value="topay">TOPAY</option>                                
+                            </select>
+                        </div>
+                    </td>
+                    <td width='33%'>
+                        <div class="container">
+                            <label><b>MOD *</b></label>
+                            <select name="mod" required>
+                                <option value="road">ROAD</option>
+                                <option value="air">AIR</option>
+                                <option value="rail">RAIL</option>                                
+                            </select>
+                        </div>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="container">
+                            <label><b>SERVICE TYPE *</b></label>
+                            <select name="servicetype" required>
+                                <option value="FTL">FTL</option>
+                                <option value="PART LOAD">PART LOAD</option>
+                                <option value="PACKAGE">PACKAGE</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <label><b>GST PAID BY *</b></label>
+                            <select name="gstpaidby" required>
+                                <option value="CONSIGNER">CONSIGNER</option>
+                                <option value="CONSIGNEE">CONSIGNEE</option>
+                                <option value="TRANSPOTER">TRANSPOTER</option>
+                            </select>
                         </div>
                     </td>
                 </tr>
+
+                <!--    For Insurance Detail     -->
+
+                <tr>
+                    <td>
+                        </br></br>
+                        <b>INSURANCE DETAIL</b>                        
+                    </td>
+                    <td colspan="2" align='right'>
+                        </br></br>
+                        <INPUT type="button" value="Add Row" onclick="addRow('dataTable1')" />
+                        <INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable1')" />
+                    </td>
+                </tr>
+                <tr>                  
+                    <td colspan="3">                        
+                        <TABLE width='100%'>                            
+                            <TR bgcolor='#8bb3f4'>
+                                <TD width='2%'></TD>
+                                <TD width='28%'><label><b>COMPANY NAME *</b></label></TD>
+                                <TD width='15%'><label><b>POLICY NUMBER *</b></label></TD>
+                                <TD width='20%'><label><b>SUM INSURRED *</b></label></TD>
+                                <TD width='10%'><label><b>START DATE *</b></label></TD>
+                                <TD width='10%'><label><b>ENDS DATE *</b></label></TD>
+                                <TD width='15%'><label><b>REMARKS *</b></label></TD>
+                            </TR>
+                        </TABLE>
+                    </td>
+                </tr>
+                <tr>                  
+                    <td colspan="3">                        
+                        <TABLE id="dataTable1" width='100%'>                            
+                            <TR>
+                                <TD width='2%'><INPUT type="checkbox" name="chk"/></TD>
+                                <TD width='28%'><INPUT placeholder="COMPANY NAME" type="text" name="insconame[]"/></TD>
+                                <TD width='15%'><INPUT placeholder="POLICY NUMBER" type="text" name="insconumber[]"/></TD>
+                                <TD width='20%'><INPUT placeholder="SUM INSURRED" type="text" name="inscoamount[]"/></TD>
+                                <TD width='10%'><INPUT placeholder="START DATE" type="date" name="inscostartdate[]"/></TD>
+                                <TD width='10%'><INPUT placeholder="ENDS DATE" type="date" name="inscoenddate[]"/></TD>
+                                <TD width='15%'><INPUT placeholder="REMARKS" type="text" name="inscoremarks[]"/></TD>
+                            </TR>
+                        </TABLE>
+                    </td>
+                </tr>
+                <!--    For Product Detail     -->
+                <tr>
+                    <td>
+                        </br></br>
+                        <b>PRODUCT DETAIL</b>                        
+                    </td>
+                    <td colspan="2" align='right'>
+                        </br></br>
+                        <INPUT type="button" value="Add Row" onclick="addRow('dataTable2')" />
+                        <INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable2')" />
+                    </td>
+                </tr>
+                <tr>                    
+                    <td colspan="3">                        
+                        <TABLE>
+                            <TR bgcolor='#8bb3f4'>
+                                <TD width='2%'></TD>
+                                <TD width='10'><label><b>DESCRIPTION *</b></label></TD>
+                                <TD width='10%'><label><b>NO. OF PKT *</b></label></TD>
+                                <TD width='08%'><label><b>ACTUAL WEIGHT *</b></label></TD>
+                                <TD width='10%'><label><b>CHARGED WEIGHT *</b></label></TD>
+                                <TD width='10%'><label><b>LENGTH *</b></label></TD>
+                                <TD width='10%'><label><b>WIDTH *</b></label></TD>
+                                <TD width='10%'><label><b>HEIGHT *</b></label></TD>
+                                <TD width='10%'><label><b>MODE OF PACKING *</b></label></TD>
+                                <TD width='10%'><label><b>RATE PER PACKAGE *</b></label></TD>
+                                <TD width='10%'><label><b>RATE CHARGED *</b></label></TD>
+                            </TR>
+                        </TABLE>
+                    </td>
+                </tr>
+                <tr>                    
+                    <td colspan="3">                        
+                        <TABLE id="dataTable2">
+                            <TR>
+                                <TD><INPUT type="checkbox" name="chk"/></TD>
+                                <TD><INPUT placeholder="DESCRIPTION" type="text" name="prodec[]"/></TD>
+                                <TD><INPUT placeholder="NO. OF PACKAAGE" type="text" name="pronopkt[]"/></TD>
+                                <TD><INPUT placeholder="ACTUAL WEIGHT" type="text" name="proactwt[]"/></TD>
+                                <TD><INPUT placeholder="CHARGED WEIGHT" type="text" name="prochrgwt[]"/></TD>
+                                <TD><INPUT placeholder="LENGTH" type="text" name="prolength[]"/></TD>
+                                <TD><INPUT placeholder="WIDTH" type="text" name="prowidth[]"/></TD>
+                                <TD><INPUT placeholder="HEIGHT" type="text" name="proheight[]"/></TD>
+                                <TD><INPUT placeholder="MODE OF PACKING" type="text" name="promopkt[]"/></TD>
+                                <TD><INPUT placeholder="RATE PER PACKAGE" type="text" name="proratepkt[]"/></TD>
+                                <TD><INPUT placeholder="RATE CHARGED" type="text" name="proratechrg[]"/></TD>                                
+                            </TR>
+                        </TABLE>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="center">
+                        <div class="container">
+                            <input type="submit" name="Create" />
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>                                
             </table>
-        </form>
+            <%
+                } catch (Exception e) {
+
+                }
+            %>
+        </form>    
     </body>
 </html>

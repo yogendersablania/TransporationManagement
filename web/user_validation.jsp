@@ -13,16 +13,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title>User Validation</title>
     </head>
     <body>
         <%
             try {
+              
                 String name = request.getParameter("name").toString().trim();
                 String email = request.getParameter("email").toString().trim().toLowerCase();
                 String pass = request.getParameter("password").toString().trim();
                 String cpass = request.getParameter("confirm_password").toString().trim();
                 String address = request.getParameter("address").toString().trim();
+                String landmark = request.getParameter("landmark").toString().trim();
                 String state = request.getParameter("state").toString().trim();
                 String city = request.getParameter("city").toString().trim();
                 String pin = request.getParameter("pin").toString().trim();
@@ -49,7 +52,7 @@
                 } else {
                     if (rowscount == 0) {
                         rowscount++;
-                        String sqlString3 = "INSERT INTO employees(employees_id, employees_name, employees_email, employees_password, employees_address, employees_city, employees_state, employees_zip_code) VALUES ( '" + id + "','" + name + "','" + email + "','" + pass + "','" + address + "','" + city + "','" + state + "','" + pin + "')";
+                        String sqlString3 = "INSERT INTO employees(employees_id, employees_name, employees_email, employees_password, employees_address, employees_landmark, employees_city, employees_state, employees_zip_code) VALUES ( '" + id + "','" + name + "','" + email + "','" + pass + "','" + address + "','" + landmark + "','" + city + "','" + state + "','" + pin + "')";
                         Statement statement3 = connection.createStatement();
                         statement3.executeUpdate(sqlString3);
                         RequestDispatcher requestDispatcher = request.getRequestDispatcher("user_entry.jsp");

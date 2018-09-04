@@ -1,6 +1,6 @@
 <%-- 
-    Document   : user_delete_search
-    Created on : 25 Aug, 2018, 7:07:27 PM
+    Document   : consigner_edit_search
+    Created on : 1 Sep, 2018, 10:34:56 PM
     Author     : yogen
 --%>
 
@@ -10,13 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title>Delete User</title>
+        <title>EDIT CUSTOMER</title>
     </head>
     <body>
         <%@include file="header.jsp"%>
-        <h1 align="center">EDIT USER</h1>
-        <form name="employee" action="user_edit_list.jsp" method="post" onsubmit="formValidation()">
+        <h1 align="center">EDIT CUSTOMER</h1>
+        <form name="employee" action="customer_edit_list.jsp" method="post" onsubmit="formValidation()">
             <table width="60%" align="center">
                 <tr>
                     <td colspan="2">
@@ -34,7 +33,6 @@
                             <select name="search_type">
                                 <option value="Name">Name</option>
                                 <option value="Email">Email</option>
-                                <option value="Address">Address</option>
                                 <option value="City">City</option>
                                 <option value="State">State</option>
                                 <option value="Zip">Zip</option>

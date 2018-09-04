@@ -10,23 +10,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title>Delete User</title>
+        <title>DELETE CUSTOMER</title>
     </head>
     <body>
         <%@include file="header.jsp"%>
-        <h1 align="center">EDIT USER</h1>
-        <form name="employee" action="user_edit_list.jsp" method="post" onsubmit="formValidation()">
-            <table width="60%" align="center">
-                <tr>
-                    <td colspan="2">
-                        <%
-                            if (request.getAttribute("Message") != null) {
-                        %>
-                        <%=request.getAttribute("Message")%>
-                        <%}%>
-                    </td>
-                </tr>
+        <% if (request.getAttribute("Message") != null) {%>
+        <script type="text/javascript">
+            var dbResult = "<%=request.getAttribute("Message")%>";
+            alert(dbResult);
+        </script>
+        <% } %>
+        <h1 align="center">DELETE CUSTOMER</h1>
+        <form name="employee" action="customer_delete_list.jsp" method="post" onsubmit="formValidation()">
+            <table width="60%" align="center">                
                 <tr>
                     <td>
                         <div class="container">
@@ -34,10 +30,10 @@
                             <select name="search_type">
                                 <option value="Name">Name</option>
                                 <option value="Email">Email</option>
-                                <option value="Address">Address</option>
+                                <option value="PAN">PAN</option>
+                                <option value="GSTIN">GSTIN</option>
                                 <option value="City">City</option>
-                                <option value="State">State</option>
-                                <option value="Zip">Zip</option>
+                                <option value="State">State</option>                              
                             </select>
                         </div>
                     </td>
@@ -51,7 +47,7 @@
                 <tr>
                     <td colspan="2" align="center">
                         <div class="container">
-                            <input type="submit" value="Edit" />
+                            <input type="submit" value="Delete" />
                         </div>
                     </td>
                 </tr>

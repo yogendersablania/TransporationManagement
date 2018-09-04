@@ -7,9 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"  language="java" %>
 <link rel="stylesheet" type="text/css" href="css/form.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+
 <!DOCTYPE html>
 <html class="myFontClass">    
     <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" language="javascript">
             function inputvalidation()
             {
@@ -51,12 +53,6 @@
             <tr>
                 <td background="E8E6E5">
                     <form name="loginform" action="loginvalidation.jsp" method="post" onSubmit="return inputvalidation();" width="40%">
-                        <!--
-                        <div class="imgcontainer">
-                            <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                        </div>
-                        -->
-
                         <div class="container" width="50px">
 
                             <label><b>Username</b></label>
@@ -66,11 +62,6 @@
                             <input type="password" placeholder="Enter Password" name="pass" id="pass" required autocomplete="off">
 
                             <input type="submit" name="Login" />
-                            <!--
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                            </label>
-                            -->
                         </div>
                         <div class="container" style="background-color:#f1f1f1">
                             <button type="reset" class="cancelbtn">Cancel</button>

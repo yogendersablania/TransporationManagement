@@ -25,7 +25,7 @@
         <% } %>
         <%
             Connection connection = com.smexpress.in.Connection_Manager.get_Connection();
-            String sqlString = "select consigner_id as ID, consigner_name as NAME, CONCAT(consigner_address1,', ',consigner_address2,', ',consigner_address3,', ',consigner_landmark,', ',consigner_city,', ',consigner_state,', ',consigner_country,', ',consigner_pin) as ADDRESS, consigner_phone as PHONE, consigner_mobile as MOBILE, consigner_email as EMAIL, consigner_website as WEBSITE, consigner_gstin as GSTIN, consigner_pan as PAN from consigner order by consigner_id";
+            String sqlString = "select customer_id as ID, customer_name as NAME, CONCAT(customer_address1,', ',customer_address2,', ',customer_address3,', ',customer_landmark,', ',customer_city,', ',customer_state,', ',customer_country,', ',customer_pin) as ADDRESS, customer_phone as PHONE, customer_mobile as MOBILE, customer_email as EMAIL, customer_website as WEBSITE, customer_gstin as GSTIN, customer_pan as PAN from customer order by customer_id";
             Statement statement = connection.createStatement();
             statement.executeQuery(sqlString);
             ResultSet rs = statement.getResultSet();
@@ -42,7 +42,7 @@
         <table width="90%" align="center">            
             <tr>
                 <td colspan=9 background="E8E6E5" align="center">   
-                    <label><h2>CONSIGNER LIST</h2></label>
+                    <label><h2>CUSTOMER LIST</h2></label>
                 </td>
             </tr>
         </table>
@@ -75,8 +75,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
-                <td><a href="consigner_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"><img src="images\edit.png" height='20' width='20'/></a></td>
-                <td><a href="consigner_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
+                <td><a href="customer_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="customer_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%} else {%>
             <tr bgcolor="white">
@@ -89,8 +89,8 @@
                 <td><%=rs.getString("WEBSITE").toString()%></td>
                 <td><%=rs.getString("GSTIN").toString()%></td>
                 <td><%=rs.getString("PAN").toString()%></td>
-                <td><a href="consigner_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"><img src="images\edit.png" height='20' width='20'/></a></td>
-                <td><a href="consigner_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
+                <td><a href="customer_edit_view.jsp?ID=<%=rs.getString("ID").toString()%>&PAGE=LIST"><img src="images\edit.png" height='20' width='20'/></a></td>
+                <td><a href="customer_delete.jsp?ID=<%=rs.getString("ID").toString()%>"/><img src="images\delete.png" height='20' width='20'/></a></td>
             </tr>
             <%}
                     i++;

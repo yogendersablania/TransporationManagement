@@ -100,14 +100,12 @@
                     </td>
                 </tr>
                 <tr>               
-                    <td></td>
-                    <td>
+                    <td colspan="3" align="center">
                         <div class="container">
-                            <button type="submit">Create</button>                            
+                            <input type="submit" Value="Create" />
                         </div>
                     </td>
-                    <td></td>
-                </tr>
+                </tr> 
             </table>
         </form>    
     </body>

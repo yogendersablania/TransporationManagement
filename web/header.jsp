@@ -27,8 +27,8 @@
                             <li class="parent">
                                 <a href="">Consignment Note</a>
                                 <ul class="sub-menu">
-                                    <li><a href="${pageContext.request.contextPath}/consignment_entry.jsp">CN ENTRY</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/consignment_edit.jsp">Alter</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignment_entry.jsp">CN Entry</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/consignment_edit.jsp">Edit</a></li>
                                     <li><a href="${pageContext.request.contextPath}/consignment_delete.jsp">Delete</a></li>
                                     <li>
                                         <a class="parent" href="#">Reports</a>
@@ -68,15 +68,15 @@
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">Create Consigner</a></li>
                                             <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">Create Consignee</a></li>
-
+                                            <li><a href="${pageContext.request.contextPath}/customer_entry.jsp">Create Customer</a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a class="parent" href="#">Edit</a>
                                         <ul class="sub-menu">
-                                            <li><a href="${pageContext.request.contextPath}/consigner_entry.jsp">Edit Consigner</a></li>
-                                            <li><a href="${pageContext.request.contextPath}/consignee_entry.jsp">Edit Consignee</a></li>
-
+                                            <li><a href="${pageContext.request.contextPath}/consigner_edit_search.jsp">Edit Consigner</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/consignee_edit_search.jsp">Edit Consignee</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/customer_edit_search.jsp">Edit Customer</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -84,7 +84,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consigner_delete_search.jsp">Delete Consigner</a></li>
                                             <li><a href="${pageContext.request.contextPath}/consignee_delete_search.jsp">Delete Consignee</a></li>
-
+                                            <li><a href="${pageContext.request.contextPath}/customer_delete_search.jsp">Delete Customer</a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -92,6 +92,7 @@
                                         <ul class="sub-menu">
                                             <li><a href="${pageContext.request.contextPath}/consigner_list.jsp">Consigner List</a></li>
                                             <li><a href="${pageContext.request.contextPath}/consignee_list.jsp">Consigner List</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/customer_list.jsp">Customer List</a></li>
                                         </ul>
                                     </li>
                                 </ul>
